@@ -1,5 +1,6 @@
 add_library(mapreduce
   mapreduce/engine.cpp
+  mapreduce/utils/string_utils.cpp
 )
 
 target_include_directories(mapreduce
