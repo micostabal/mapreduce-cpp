@@ -1,7 +1,11 @@
 #include <gtest/gtest.h>
 #include "mapreduce/utils/string_utils.h"
 
-
-TEST(StringUtilsTest, ToDeleteAddFunction) {
-    EXPECT_EQ(mapreduce::utils::string_utils::add(1, 1), 2);
+TEST(StringUtilsTest, SplitWordsFirst) {
+    auto words = mapreduce::utils::string_utils::split_words("hello world from mapreduce");
+    ASSERT_EQ(words.size(), 4);
+    EXPECT_EQ(words[0], "hello");
+    EXPECT_EQ(words[1], "world");
+    EXPECT_EQ(words[2], "from");
+    EXPECT_EQ(words[3], "mapreduce");
 }

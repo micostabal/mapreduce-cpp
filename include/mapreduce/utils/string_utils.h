@@ -1,5 +1,8 @@
 #pragma once
 
+#include <vector>
+#include <string>
+
 namespace mapreduce::utils::string_utils {
-    int add(int a, int b);
+    std::vector<std::string> split_words(const std::string &string);
 }
