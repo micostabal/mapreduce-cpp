@@ -3,5 +3,5 @@
 
 
 TEST(StringUtilsTest, ToDeleteAddFunction) {
-    EXPECT_EQ(mapreduce::utils::add(1, 1), 2);
+    EXPECT_EQ(mapreduce::utils::string_utils::add(1, 1), 2);
 }
