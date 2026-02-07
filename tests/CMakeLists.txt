@@ -12,6 +12,7 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(mapreduce_tests
   test_mapper.cpp
+  test_worker.cpp
   utils/test_string_utils.cpp
 )
 

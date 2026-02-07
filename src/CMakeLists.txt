@@ -1,5 +1,7 @@
 add_library(mapreduce
   mapreduce/engine.cpp
+  mapreduce/worker.cpp
+  mapreduce/worker_task.cpp
   mapreduce/utils/string_utils.cpp
 )
 
