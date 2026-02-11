@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "mapreduce/worker_task.h"
+#include "worker_task.h"
 
 namespace mapreduce {
 

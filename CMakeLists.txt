@@ -5,11 +5,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-option(ENABLE_TESTS "Enable unit tests" ON)
+enable_testing()
 
-add_subdirectory(src)
-
-if (ENABLE_TESTS)
-  enable_testing()
-  add_subdirectory(tests)
-endif()
+add_subdirectory(common)
+add_subdirectory(worker)
+add_subdirectory(master)
+add_subdirectory(tests)

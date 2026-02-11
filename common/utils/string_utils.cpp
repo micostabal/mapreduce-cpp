@@ -1,7 +1,7 @@
-#include "mapreduce/utils/string_utils.h"
+#include <common/utils/string_utils.h>
 #include <sstream>
 
-namespace mapreduce::utils::string_utils {
+namespace common::utils::string_utils {
     std::vector<std::string> split_words(const std::string &input) {
         
         std::istringstream iis(input);

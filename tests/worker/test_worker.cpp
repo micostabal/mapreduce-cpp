@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <string>
-#include "mapreduce/worker.h"
+#include "worker.h"
 
 TEST(WorkerSuiteTest, WorkerBasicTest) {
     mapreduce::Worker worker(1, "my_worker");

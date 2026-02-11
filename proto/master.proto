@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package mapreduce.master;
+
+service MasterService {
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+}
+
+message HeartbeatRequest {
+  int32 worker_id = 1;
+}
+
+message HeartbeatResponse {
+  bool ok = 1;
+}

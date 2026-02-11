@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
-#include "mapreduce/utils/string_utils.h"
+#include "common/utils/string_utils.h"
 
 TEST(StringUtilsTest, SplitWordsFirst) {
-    auto words = mapreduce::utils::string_utils::split_words("hello world from mapreduce");
+    auto words = common::utils::string_utils::split_words("hello world from mapreduce");
     ASSERT_EQ(words.size(), 4);
     EXPECT_EQ(words[0], "hello");
     EXPECT_EQ(words[1], "world");

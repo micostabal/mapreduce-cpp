@@ -1,6 +1,5 @@
 #pragma once
-#include "mapreduce/worker.h"
-#include "mapreduce/worker_task.h"
+#include "worker_task.h"
 #include <string>
 #include <vector>
 

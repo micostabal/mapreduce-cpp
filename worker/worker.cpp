@@ -1,8 +1,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "mapreduce/worker.h"
-#include "mapreduce/worker_task.h"
+#include "worker.h"
+#include "worker_task.h"
 
 namespace mapreduce {
 

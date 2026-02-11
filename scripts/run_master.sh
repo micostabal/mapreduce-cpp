@@ -2,7 +2,7 @@
 set -e
 
 BUILD_DIR="build"
-EXECUTABLE="$BUILD_DIR/src/mapreduce_app"
+EXECUTABLE="$BUILD_DIR/master/master"
 
 # Configure if build directory doesn't exist
 if [ ! -d "$BUILD_DIR" ]; then
@@ -13,5 +13,5 @@ fi
 cmake --build "$BUILD_DIR"
 
 # Run
-echo "Running mapreduce_app..."
+echo "Running master..."
 "$EXECUTABLE" "$@"
