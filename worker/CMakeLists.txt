@@ -2,10 +2,12 @@
 add_library(worker_lib
   worker_task.cpp
   worker.cpp
+  master_client.cpp
 )
 
 target_link_libraries(worker_lib
   PUBLIC
+    proto_master
     common
 )
 

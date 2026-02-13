@@ -1,10 +1,12 @@
 
 add_library(master_lib
   master.cpp
+  master_service.cpp
 )
 
 target_link_libraries(master_lib
   PUBLIC
+    proto_master
     common
 )
 
