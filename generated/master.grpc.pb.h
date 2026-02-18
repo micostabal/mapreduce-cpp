@@ -43,11 +43,20 @@ class MasterService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::HeartbeatResponse>> PrepareAsyncHeartbeat(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::HeartbeatResponse>>(PrepareAsyncHeartbeatRaw(context, request, cq));
     }
+    virtual ::grpc::Status RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::mapreduce::master::RegisterResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::RegisterResponse>> AsyncRegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::RegisterResponse>>(AsyncRegisterWorkerRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::RegisterResponse>> PrepareAsyncRegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::RegisterResponse>>(PrepareAsyncRegisterWorkerRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
       virtual void Heartbeat(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest* request, ::mapreduce::master::HeartbeatResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Heartbeat(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest* request, ::mapreduce::master::HeartbeatResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -55,6 +64,8 @@ class MasterService final {
    private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::HeartbeatResponse>* AsyncHeartbeatRaw(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::HeartbeatResponse>* PrepareAsyncHeartbeatRaw(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::RegisterResponse>* AsyncRegisterWorkerRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::mapreduce::master::RegisterResponse>* PrepareAsyncRegisterWorkerRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -66,11 +77,20 @@ class MasterService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mapreduce::master::HeartbeatResponse>> PrepareAsyncHeartbeat(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mapreduce::master::HeartbeatResponse>>(PrepareAsyncHeartbeatRaw(context, request, cq));
     }
+    ::grpc::Status RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::mapreduce::master::RegisterResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>> AsyncRegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>>(AsyncRegisterWorkerRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>> PrepareAsyncRegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>>(PrepareAsyncRegisterWorkerRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
       void Heartbeat(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest* request, ::mapreduce::master::HeartbeatResponse* response, std::function<void(::grpc::Status)>) override;
       void Heartbeat(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest* request, ::mapreduce::master::HeartbeatResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response, std::function<void(::grpc::Status)>) override;
+      void RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -84,7 +104,10 @@ class MasterService final {
     class async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::mapreduce::master::HeartbeatResponse>* AsyncHeartbeatRaw(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::mapreduce::master::HeartbeatResponse>* PrepareAsyncHeartbeatRaw(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>* AsyncRegisterWorkerRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>* PrepareAsyncRegisterWorkerRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Heartbeat_;
+    const ::grpc::internal::RpcMethod rpcmethod_RegisterWorker_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -93,6 +116,7 @@ class MasterService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status Heartbeat(::grpc::ServerContext* context, const ::mapreduce::master::HeartbeatRequest* request, ::mapreduce::master::HeartbeatResponse* response);
+    virtual ::grpc::Status RegisterWorker(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Heartbeat : public BaseClass {
@@ -114,7 +138,27 @@ class MasterService final {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Heartbeat<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_RegisterWorker : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RegisterWorker() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_RegisterWorker() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterWorker(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::mapreduce::master::RegisterResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterWorker(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::mapreduce::master::RegisterResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Heartbeat<WithAsyncMethod_RegisterWorker<Service > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Heartbeat : public BaseClass {
    private:
@@ -142,7 +186,34 @@ class MasterService final {
     virtual ::grpc::ServerUnaryReactor* Heartbeat(
       ::grpc::CallbackServerContext* /*context*/, const ::mapreduce::master::HeartbeatRequest* /*request*/, ::mapreduce::master::HeartbeatResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Heartbeat<Service > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_RegisterWorker : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_RegisterWorker() {
+      ::grpc::Service::MarkMethodCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::mapreduce::master::RegisterResponse>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response) { return this->RegisterWorker(context, request, response); }));}
+    void SetMessageAllocatorFor_RegisterWorker(
+        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::mapreduce::master::RegisterResponse>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::mapreduce::master::RegisterResponse>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_RegisterWorker() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterWorker(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::mapreduce::master::RegisterResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RegisterWorker(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::mapreduce::master::RegisterResponse* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_Heartbeat<WithCallbackMethod_RegisterWorker<Service > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Heartbeat : public BaseClass {
@@ -157,6 +228,23 @@ class MasterService final {
     }
     // disable synchronous version of this method
     ::grpc::Status Heartbeat(::grpc::ServerContext* /*context*/, const ::mapreduce::master::HeartbeatRequest* /*request*/, ::mapreduce::master::HeartbeatResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RegisterWorker : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RegisterWorker() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_RegisterWorker() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterWorker(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::mapreduce::master::RegisterResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -182,6 +270,26 @@ class MasterService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_RegisterWorker : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RegisterWorker() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_RegisterWorker() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterWorker(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::mapreduce::master::RegisterResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterWorker(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawCallbackMethod_Heartbeat : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -201,6 +309,28 @@ class MasterService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* Heartbeat(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_RegisterWorker : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_RegisterWorker() {
+      ::grpc::Service::MarkMethodRawCallback(1,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->RegisterWorker(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_RegisterWorker() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterWorker(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::mapreduce::master::RegisterResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* RegisterWorker(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -230,9 +360,36 @@ class MasterService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedHeartbeat(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::mapreduce::master::HeartbeatRequest,::mapreduce::master::HeartbeatResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Heartbeat<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_RegisterWorker : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_RegisterWorker() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::google::protobuf::Empty, ::mapreduce::master::RegisterResponse>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::google::protobuf::Empty, ::mapreduce::master::RegisterResponse>* streamer) {
+                       return this->StreamedRegisterWorker(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_RegisterWorker() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RegisterWorker(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::mapreduce::master::RegisterResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRegisterWorker(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::mapreduce::master::RegisterResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_RegisterWorker<Service > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Heartbeat<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_Heartbeat<WithStreamedUnaryMethod_RegisterWorker<Service > > StreamedService;
 };
 
 }  // namespace master

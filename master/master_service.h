@@ -8,6 +8,11 @@ public:
       grpc::ServerContext* context,
       const HeartbeatRequest* request,
       HeartbeatResponse* response) override;
+      
+  grpc::Status RegisterWorker(
+      grpc::ServerContext* context,
+      const google::protobuf::Empty* request,
+      RegisterResponse* response) override;
 };
 
 }

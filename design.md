@@ -6,6 +6,7 @@
 Threads:
 1.- Should send heartbeats to master
 2.- Receive tasks from master
+3.- Perform tasks
 
 ### Mapper
 ### Reducer

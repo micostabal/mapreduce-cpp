@@ -1,9 +1,16 @@
 syntax = "proto3";
 
+import "google/protobuf/empty.proto";
+
 package mapreduce.master;
 
 service MasterService {
   rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+  rpc RegisterWorker(google.protobuf.Empty) returns (RegisterResponse);
+}
+
+message RegisterResponse {
+  int32 worker_id = 1;
 }
 
 message HeartbeatRequest {

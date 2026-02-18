@@ -12,6 +12,8 @@ public:
   explicit MasterClient(std::shared_ptr<grpc::Channel> channel);
 
   bool SendHeartbeat(int worker_id);
+  
+  int RegisterWorker();
 
 private:
   std::unique_ptr<mapreduce::master::MasterService::Stub> stub_;

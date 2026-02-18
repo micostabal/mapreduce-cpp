@@ -22,6 +22,19 @@ namespace _pbi = _pb::internal;
 
 namespace mapreduce {
 namespace master {
+PROTOBUF_CONSTEXPR RegisterResponse::RegisterResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.worker_id_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct RegisterResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RegisterResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RegisterResponseDefaultTypeInternal() {}
+  union {
+    RegisterResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegisterResponseDefaultTypeInternal _RegisterResponse_default_instance_;
 PROTOBUF_CONSTEXPR HeartbeatRequest::HeartbeatRequest(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.worker_id_)*/0
@@ -50,11 +63,18 @@ struct HeartbeatResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HeartbeatResponseDefaultTypeInternal _HeartbeatResponse_default_instance_;
 }  // namespace master
 }  // namespace mapreduce
-static ::_pb::Metadata file_level_metadata_master_2eproto[2];
+static ::_pb::Metadata file_level_metadata_master_2eproto[3];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_master_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_master_2eproto = nullptr;
 
 const uint32_t TableStruct_master_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::RegisterResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::RegisterResponse, _impl_.worker_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::mapreduce::master::HeartbeatRequest, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -71,28 +91,37 @@ const uint32_t TableStruct_master_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   PROTOBUF_FIELD_OFFSET(::mapreduce::master::HeartbeatResponse, _impl_.ok_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::mapreduce::master::HeartbeatRequest)},
-  { 7, -1, -1, sizeof(::mapreduce::master::HeartbeatResponse)},
+  { 0, -1, -1, sizeof(::mapreduce::master::RegisterResponse)},
+  { 7, -1, -1, sizeof(::mapreduce::master::HeartbeatRequest)},
+  { 14, -1, -1, sizeof(::mapreduce::master::HeartbeatResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::mapreduce::master::_RegisterResponse_default_instance_._instance,
   &::mapreduce::master::_HeartbeatRequest_default_instance_._instance,
   &::mapreduce::master::_HeartbeatResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_master_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014master.proto\022\020mapreduce.master\"%\n\020Hear"
-  "tbeatRequest\022\021\n\tworker_id\030\001 \001(\005\"\037\n\021Heart"
-  "beatResponse\022\n\n\002ok\030\001 \001(\0102e\n\rMasterServic"
-  "e\022T\n\tHeartbeat\022\".mapreduce.master.Heartb"
-  "eatRequest\032#.mapreduce.master.HeartbeatR"
-  "esponseb\006proto3"
+  "\n\014master.proto\022\020mapreduce.master\032\033google"
+  "/protobuf/empty.proto\"%\n\020RegisterRespons"
+  "e\022\021\n\tworker_id\030\001 \001(\005\"%\n\020HeartbeatRequest"
+  "\022\021\n\tworker_id\030\001 \001(\005\"\037\n\021HeartbeatResponse"
+  "\022\n\n\002ok\030\001 \001(\0102\263\001\n\rMasterService\022T\n\tHeartb"
+  "eat\022\".mapreduce.master.HeartbeatRequest\032"
+  "#.mapreduce.master.HeartbeatResponse\022L\n\016"
+  "RegisterWorker\022\026.google.protobuf.Empty\032\""
+  ".mapreduce.master.RegisterResponseb\006prot"
+  "o3"
   ;
+static const ::_pbi::DescriptorTable* const descriptor_table_master_2eproto_deps[1] = {
+  &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
+};
 static ::_pbi::once_flag descriptor_table_master_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_master_2eproto = {
-    false, false, 215, descriptor_table_protodef_master_2eproto,
+    false, false, 362, descriptor_table_protodef_master_2eproto,
     "master.proto",
-    &descriptor_table_master_2eproto_once, nullptr, 0, 2,
+    &descriptor_table_master_2eproto_once, descriptor_table_master_2eproto_deps, 1, 3,
     schemas, file_default_instances, TableStruct_master_2eproto::offsets,
     file_level_metadata_master_2eproto, file_level_enum_descriptors_master_2eproto,
     file_level_service_descriptors_master_2eproto,
@@ -105,6 +134,184 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_master_2
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_master_2eproto(&descriptor_table_master_2eproto);
 namespace mapreduce {
 namespace master {
+
+// ===================================================================
+
+class RegisterResponse::_Internal {
+ public:
+};
+
+RegisterResponse::RegisterResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:mapreduce.master.RegisterResponse)
+}
+RegisterResponse::RegisterResponse(const RegisterResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RegisterResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.worker_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.worker_id_ = from._impl_.worker_id_;
+  // @@protoc_insertion_point(copy_constructor:mapreduce.master.RegisterResponse)
+}
+
+inline void RegisterResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.worker_id_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+RegisterResponse::~RegisterResponse() {
+  // @@protoc_insertion_point(destructor:mapreduce.master.RegisterResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RegisterResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void RegisterResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RegisterResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mapreduce.master.RegisterResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.worker_id_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RegisterResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 worker_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.worker_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RegisterResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mapreduce.master.RegisterResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 worker_id = 1;
+  if (this->_internal_worker_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_worker_id(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mapreduce.master.RegisterResponse)
+  return target;
+}
+
+size_t RegisterResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mapreduce.master.RegisterResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 worker_id = 1;
+  if (this->_internal_worker_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_worker_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RegisterResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RegisterResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RegisterResponse::GetClassData() const { return &_class_data_; }
+
+
+void RegisterResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RegisterResponse*>(&to_msg);
+  auto& from = static_cast<const RegisterResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mapreduce.master.RegisterResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_worker_id() != 0) {
+    _this->_internal_set_worker_id(from._internal_worker_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RegisterResponse::CopyFrom(const RegisterResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mapreduce.master.RegisterResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RegisterResponse::IsInitialized() const {
+  return true;
+}
+
+void RegisterResponse::InternalSwap(RegisterResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.worker_id_, other->_impl_.worker_id_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RegisterResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
+      file_level_metadata_master_2eproto[0]);
+}
 
 // ===================================================================
 
@@ -281,7 +488,7 @@ void HeartbeatRequest::InternalSwap(HeartbeatRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata HeartbeatRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
-      file_level_metadata_master_2eproto[0]);
+      file_level_metadata_master_2eproto[1]);
 }
 
 // ===================================================================
@@ -459,13 +666,17 @@ void HeartbeatResponse::InternalSwap(HeartbeatResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata HeartbeatResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
-      file_level_metadata_master_2eproto[1]);
+      file_level_metadata_master_2eproto[2]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace master
 }  // namespace mapreduce
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::mapreduce::master::RegisterResponse*
+Arena::CreateMaybeMessage< ::mapreduce::master::RegisterResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mapreduce::master::RegisterResponse >(arena);
+}
 template<> PROTOBUF_NOINLINE ::mapreduce::master::HeartbeatRequest*
 Arena::CreateMaybeMessage< ::mapreduce::master::HeartbeatRequest >(Arena* arena) {
   return Arena::CreateMessageInternal< ::mapreduce::master::HeartbeatRequest >(arena);
