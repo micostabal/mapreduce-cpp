@@ -9,3 +9,13 @@ TEST(StringUtilsTest, SplitWordsFirst) {
     EXPECT_EQ(words[2], "from");
     EXPECT_EQ(words[3], "mapreduce");
 }
+
+TEST(StringUtilsTest, HashWordTest) {
+    int hash_mary = common::utils::string_utils::hash_word("Mary");
+    int hash_paul = common::utils::string_utils::hash_word("Paul");
+    
+    std::cout << "Hash Mary: " << hash_mary << std::endl;
+    std::cout << "Hash Paul: " << hash_paul << std::endl;
+
+    ASSERT_NE(hash_mary, hash_paul);
+}

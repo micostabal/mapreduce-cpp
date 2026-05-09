@@ -1,4 +1,5 @@
 #include <chrono>
+#include <string>
 #include <unordered_map>
 
 namespace mapreduce::master::state {
@@ -10,18 +11,19 @@ private:
     bool alive;
 public:
     WorkerState(int id);
-    void to_string();
+    std::string to_string();
     int get_worker_id();
 };
 
 struct MasterState {
 private:
     std::unordered_map<int, mapreduce::master::state::WorkerState> workers;
-
+    
     enum Phase { MAP, REDUCE, DONE } phase;
 public:
     MasterState();
     void add_worker_state(mapreduce::master::state::WorkerState &new_worker_info);
+    int get_amount_workers();
 };
 
 
