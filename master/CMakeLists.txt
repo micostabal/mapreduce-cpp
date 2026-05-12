@@ -3,6 +3,7 @@ add_library(master_lib
   master.cpp
   master_service.cpp
   state.cpp
+  task.cpp
 )
 
 target_link_libraries(master_lib

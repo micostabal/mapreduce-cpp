@@ -1,6 +1,6 @@
 #include "master.grpc.pb.h"
 
-namespace mapreduce::master {
+namespace mapreduce::master::service {
 
 class MasterServiceImpl final : public MasterService::Service {
 public:

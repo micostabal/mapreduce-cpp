@@ -8,7 +8,7 @@ int new_worker_id=0;
 mapreduce::master::state::MasterState master_state;
 
 
-namespace mapreduce::master {
+namespace mapreduce::master::service {
 
 grpc::Status MasterServiceImpl::Heartbeat(
     grpc::ServerContext*,
