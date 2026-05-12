@@ -15,24 +15,25 @@ namespace mapreduce::master {
 
     void Master::init() {
         
-        mapreduce::master::task::MasterTask task1(
-            1,
-            mapreduce::master::task::MasterTask::TaskType::MAP
-        );
+        int MAP_TASKS = 5;
+        int REDUCE_TASKS = 3;
 
-        mapreduce::master::task::MasterTask task2(
-            2,
-            mapreduce::master::task::MasterTask::TaskType::MAP
-        );
+        for (int i=0;i<MAP_TASKS;i++) {
+            mapreduce::master::task::MasterTask task_m(
+                i,
+                mapreduce::master::task::MasterTask::TaskType::MAP
+            );
+            this->state.add_map_task(task_m);
+        }
 
-        mapreduce::master::task::MasterTask task3(
-            3,
-            mapreduce::master::task::MasterTask::TaskType::MAP
-        );
+        for (int i=0;i<REDUCE_TASKS;i++) {
+            mapreduce::master::task::MasterTask task_r(
+                i,
+                mapreduce::master::task::MasterTask::TaskType::MAP
+            );
+            this->state.add_reduce_task(task_r);
+        }
 
-        this->state.add_map_task(task1);
-        this->state.add_map_task(task2);
-        this->state.add_map_task(task3);
     };
 
     void Master::start() {
