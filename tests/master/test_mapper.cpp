@@ -11,15 +11,11 @@ TEST(MapperTest, MasterStateShouldStartWithZeroWorkers) {
   
   EXPECT_EQ(master_state.get_amount_workers(), 0);
   
-  mapreduce::master::state::WorkerState worker_state(1);
-  
-  master_state.add_worker_state(worker_state);
+  master_state.add_worker("address1");
   
   EXPECT_EQ(master_state.get_amount_workers(), 1);
-
-  mapreduce::master::state::WorkerState worker_state_two(2);
   
-  master_state.add_worker_state(worker_state_two);
+  master_state.add_worker("address2");
   
   EXPECT_EQ(master_state.get_amount_workers(), 2);
 }

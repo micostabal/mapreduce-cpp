@@ -10,6 +10,8 @@
 #include "master_client.h"
 #include <common/utils/string_utils.h>
 
+#define MASTER_ADDRESS "localhost:50051"
+
 
 void heartbeat_thread(mapreduce::worker::MasterClient &client, int worker_id) {
     std::cout << "Starting to emit heartbeats every 1 second" << std::endl;
@@ -21,18 +23,23 @@ void heartbeat_thread(mapreduce::worker::MasterClient &client, int worker_id) {
     }
 }
 
-int main() {
+void worcount_example() {
     std::vector<std::string> words = common::utils::string_utils::split_words("Jesus is King!");
     std::cout << "Word count: " << words.size() << std::endl;
     std::cout << "MapReduce Worker" << std::endl;
-    
+}
+
+int main(int argc, char *argv[]) {
+
     auto channel = grpc::CreateChannel(
-      "localhost:50051",
+      MASTER_ADDRESS,
       grpc::InsecureChannelCredentials());
 
     mapreduce::worker::MasterClient client(channel);
     
-    int worker_id = client.RegisterWorker();
+    std::string WORKER_ADDRESS = "localhost:50052";
+    
+    int worker_id = client.RegisterWorker(WORKER_ADDRESS);
     
     std::cout << "Successfully registered worker, id " << worker_id << std::endl;
     

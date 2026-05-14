@@ -3,6 +3,8 @@ add_library(worker_lib
   worker_task.cpp
   worker.cpp
   master_client.cpp
+  worker_service.h
+  worker_service.cpp
 )
 
 target_link_libraries(worker_lib

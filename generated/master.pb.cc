@@ -22,6 +22,19 @@ namespace _pbi = _pb::internal;
 
 namespace mapreduce {
 namespace master {
+PROTOBUF_CONSTEXPR RegisterRequest::RegisterRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.address_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct RegisterRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RegisterRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RegisterRequestDefaultTypeInternal() {}
+  union {
+    RegisterRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegisterRequestDefaultTypeInternal _RegisterRequest_default_instance_;
 PROTOBUF_CONSTEXPR RegisterResponse::RegisterResponse(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.worker_id_)*/0
@@ -61,13 +74,48 @@ struct HeartbeatResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HeartbeatResponseDefaultTypeInternal _HeartbeatResponse_default_instance_;
+PROTOBUF_CONSTEXPR HandleFinishedMapTaskRequest::HandleFinishedMapTaskRequest(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.results_)*/{}
+  , /*decltype(_impl_.worker_id_)*/0
+  , /*decltype(_impl_.task_id_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct HandleFinishedMapTaskRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR HandleFinishedMapTaskRequestDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~HandleFinishedMapTaskRequestDefaultTypeInternal() {}
+  union {
+    HandleFinishedMapTaskRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HandleFinishedMapTaskRequestDefaultTypeInternal _HandleFinishedMapTaskRequest_default_instance_;
+PROTOBUF_CONSTEXPR HandleFinishedMapTaskResponse::HandleFinishedMapTaskResponse(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.ok_)*/false
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct HandleFinishedMapTaskResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR HandleFinishedMapTaskResponseDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~HandleFinishedMapTaskResponseDefaultTypeInternal() {}
+  union {
+    HandleFinishedMapTaskResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HandleFinishedMapTaskResponseDefaultTypeInternal _HandleFinishedMapTaskResponse_default_instance_;
 }  // namespace master
 }  // namespace mapreduce
-static ::_pb::Metadata file_level_metadata_master_2eproto[3];
+static ::_pb::Metadata file_level_metadata_master_2eproto[6];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_master_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_master_2eproto = nullptr;
 
 const uint32_t TableStruct_master_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::RegisterRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::RegisterRequest, _impl_.address_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::mapreduce::master::RegisterResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -89,39 +137,64 @@ const uint32_t TableStruct_master_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(p
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::mapreduce::master::HeartbeatResponse, _impl_.ok_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::HandleFinishedMapTaskRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::HandleFinishedMapTaskRequest, _impl_.worker_id_),
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::HandleFinishedMapTaskRequest, _impl_.task_id_),
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::HandleFinishedMapTaskRequest, _impl_.results_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::HandleFinishedMapTaskResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::mapreduce::master::HandleFinishedMapTaskResponse, _impl_.ok_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, -1, sizeof(::mapreduce::master::RegisterResponse)},
-  { 7, -1, -1, sizeof(::mapreduce::master::HeartbeatRequest)},
-  { 14, -1, -1, sizeof(::mapreduce::master::HeartbeatResponse)},
+  { 0, -1, -1, sizeof(::mapreduce::master::RegisterRequest)},
+  { 7, -1, -1, sizeof(::mapreduce::master::RegisterResponse)},
+  { 14, -1, -1, sizeof(::mapreduce::master::HeartbeatRequest)},
+  { 21, -1, -1, sizeof(::mapreduce::master::HeartbeatResponse)},
+  { 28, -1, -1, sizeof(::mapreduce::master::HandleFinishedMapTaskRequest)},
+  { 37, -1, -1, sizeof(::mapreduce::master::HandleFinishedMapTaskResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
+  &::mapreduce::master::_RegisterRequest_default_instance_._instance,
   &::mapreduce::master::_RegisterResponse_default_instance_._instance,
   &::mapreduce::master::_HeartbeatRequest_default_instance_._instance,
   &::mapreduce::master::_HeartbeatResponse_default_instance_._instance,
+  &::mapreduce::master::_HandleFinishedMapTaskRequest_default_instance_._instance,
+  &::mapreduce::master::_HandleFinishedMapTaskResponse_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_master_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\014master.proto\022\020mapreduce.master\032\033google"
-  "/protobuf/empty.proto\"%\n\020RegisterRespons"
-  "e\022\021\n\tworker_id\030\001 \001(\005\"%\n\020HeartbeatRequest"
-  "\022\021\n\tworker_id\030\001 \001(\005\"\037\n\021HeartbeatResponse"
-  "\022\n\n\002ok\030\001 \001(\0102\263\001\n\rMasterService\022T\n\tHeartb"
-  "eat\022\".mapreduce.master.HeartbeatRequest\032"
-  "#.mapreduce.master.HeartbeatResponse\022L\n\016"
-  "RegisterWorker\022\026.google.protobuf.Empty\032\""
-  ".mapreduce.master.RegisterResponseb\006prot"
-  "o3"
+  "\n\014master.proto\022\020mapreduce.master\"\"\n\017Regi"
+  "sterRequest\022\017\n\007address\030\001 \001(\t\"%\n\020Register"
+  "Response\022\021\n\tworker_id\030\001 \001(\005\"%\n\020Heartbeat"
+  "Request\022\021\n\tworker_id\030\001 \001(\005\"\037\n\021HeartbeatR"
+  "esponse\022\n\n\002ok\030\001 \001(\010\"S\n\034HandleFinishedMap"
+  "TaskRequest\022\021\n\tworker_id\030\001 \001(\005\022\017\n\007task_i"
+  "d\030\002 \001(\005\022\017\n\007results\030\003 \003(\t\"+\n\035HandleFinish"
+  "edMapTaskResponse\022\n\n\002ok\030\001 \001(\0102\270\002\n\rMaster"
+  "Service\022T\n\tHeartbeat\022\".mapreduce.master."
+  "HeartbeatRequest\032#.mapreduce.master.Hear"
+  "tbeatResponse\022W\n\016RegisterWorker\022!.mapred"
+  "uce.master.RegisterRequest\032\".mapreduce.m"
+  "aster.RegisterResponse\022x\n\025HandleFinished"
+  "MapTask\022..mapreduce.master.HandleFinishe"
+  "dMapTaskRequest\032/.mapreduce.master.Handl"
+  "eFinishedMapTaskResponseb\006proto3"
   ;
-static const ::_pbi::DescriptorTable* const descriptor_table_master_2eproto_deps[1] = {
-  &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
-};
 static ::_pbi::once_flag descriptor_table_master_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_master_2eproto = {
-    false, false, 362, descriptor_table_protodef_master_2eproto,
+    false, false, 632, descriptor_table_protodef_master_2eproto,
     "master.proto",
-    &descriptor_table_master_2eproto_once, descriptor_table_master_2eproto_deps, 1, 3,
+    &descriptor_table_master_2eproto_once, nullptr, 0, 6,
     schemas, file_default_instances, TableStruct_master_2eproto::offsets,
     file_level_metadata_master_2eproto, file_level_enum_descriptors_master_2eproto,
     file_level_service_descriptors_master_2eproto,
@@ -134,6 +207,209 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_master_2
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_master_2eproto(&descriptor_table_master_2eproto);
 namespace mapreduce {
 namespace master {
+
+// ===================================================================
+
+class RegisterRequest::_Internal {
+ public:
+};
+
+RegisterRequest::RegisterRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:mapreduce.master.RegisterRequest)
+}
+RegisterRequest::RegisterRequest(const RegisterRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  RegisterRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.address_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_address().empty()) {
+    _this->_impl_.address_.Set(from._internal_address(), 
+      _this->GetArenaForAllocation());
+  }
+  // @@protoc_insertion_point(copy_constructor:mapreduce.master.RegisterRequest)
+}
+
+inline void RegisterRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.address_){}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.address_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.address_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+RegisterRequest::~RegisterRequest() {
+  // @@protoc_insertion_point(destructor:mapreduce.master.RegisterRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void RegisterRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.address_.Destroy();
+}
+
+void RegisterRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void RegisterRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mapreduce.master.RegisterRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.address_.ClearToEmpty();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RegisterRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string address = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_address();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "mapreduce.master.RegisterRequest.address"));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* RegisterRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mapreduce.master.RegisterRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string address = 1;
+  if (!this->_internal_address().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_address().data(), static_cast<int>(this->_internal_address().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "mapreduce.master.RegisterRequest.address");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_address(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mapreduce.master.RegisterRequest)
+  return target;
+}
+
+size_t RegisterRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mapreduce.master.RegisterRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string address = 1;
+  if (!this->_internal_address().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_address());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RegisterRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    RegisterRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RegisterRequest::GetClassData() const { return &_class_data_; }
+
+
+void RegisterRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<RegisterRequest*>(&to_msg);
+  auto& from = static_cast<const RegisterRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mapreduce.master.RegisterRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_address().empty()) {
+    _this->_internal_set_address(from._internal_address());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RegisterRequest::CopyFrom(const RegisterRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mapreduce.master.RegisterRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RegisterRequest::IsInitialized() const {
+  return true;
+}
+
+void RegisterRequest::InternalSwap(RegisterRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.address_, lhs_arena,
+      &other->_impl_.address_, rhs_arena
+  );
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RegisterRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
+      file_level_metadata_master_2eproto[0]);
+}
 
 // ===================================================================
 
@@ -310,7 +586,7 @@ void RegisterResponse::InternalSwap(RegisterResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata RegisterResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
-      file_level_metadata_master_2eproto[0]);
+      file_level_metadata_master_2eproto[1]);
 }
 
 // ===================================================================
@@ -488,7 +764,7 @@ void HeartbeatRequest::InternalSwap(HeartbeatRequest* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata HeartbeatRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
-      file_level_metadata_master_2eproto[1]);
+      file_level_metadata_master_2eproto[2]);
 }
 
 // ===================================================================
@@ -666,13 +942,445 @@ void HeartbeatResponse::InternalSwap(HeartbeatResponse* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata HeartbeatResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
-      file_level_metadata_master_2eproto[2]);
+      file_level_metadata_master_2eproto[3]);
+}
+
+// ===================================================================
+
+class HandleFinishedMapTaskRequest::_Internal {
+ public:
+};
+
+HandleFinishedMapTaskRequest::HandleFinishedMapTaskRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:mapreduce.master.HandleFinishedMapTaskRequest)
+}
+HandleFinishedMapTaskRequest::HandleFinishedMapTaskRequest(const HandleFinishedMapTaskRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  HandleFinishedMapTaskRequest* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.results_){from._impl_.results_}
+    , decltype(_impl_.worker_id_){}
+    , decltype(_impl_.task_id_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&_impl_.worker_id_, &from._impl_.worker_id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.task_id_) -
+    reinterpret_cast<char*>(&_impl_.worker_id_)) + sizeof(_impl_.task_id_));
+  // @@protoc_insertion_point(copy_constructor:mapreduce.master.HandleFinishedMapTaskRequest)
+}
+
+inline void HandleFinishedMapTaskRequest::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.results_){arena}
+    , decltype(_impl_.worker_id_){0}
+    , decltype(_impl_.task_id_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+HandleFinishedMapTaskRequest::~HandleFinishedMapTaskRequest() {
+  // @@protoc_insertion_point(destructor:mapreduce.master.HandleFinishedMapTaskRequest)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void HandleFinishedMapTaskRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.results_.~RepeatedPtrField();
+}
+
+void HandleFinishedMapTaskRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void HandleFinishedMapTaskRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:mapreduce.master.HandleFinishedMapTaskRequest)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.results_.Clear();
+  ::memset(&_impl_.worker_id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.task_id_) -
+      reinterpret_cast<char*>(&_impl_.worker_id_)) + sizeof(_impl_.task_id_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* HandleFinishedMapTaskRequest::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 worker_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.worker_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // int32 task_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.task_id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // repeated string results = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_results();
+            ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(ptr);
+            CHK_(::_pbi::VerifyUTF8(str, "mapreduce.master.HandleFinishedMapTaskRequest.results"));
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* HandleFinishedMapTaskRequest::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mapreduce.master.HandleFinishedMapTaskRequest)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 worker_id = 1;
+  if (this->_internal_worker_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_worker_id(), target);
+  }
+
+  // int32 task_id = 2;
+  if (this->_internal_task_id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_task_id(), target);
+  }
+
+  // repeated string results = 3;
+  for (int i = 0, n = this->_internal_results_size(); i < n; i++) {
+    const auto& s = this->_internal_results(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "mapreduce.master.HandleFinishedMapTaskRequest.results");
+    target = stream->WriteString(3, s, target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mapreduce.master.HandleFinishedMapTaskRequest)
+  return target;
+}
+
+size_t HandleFinishedMapTaskRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mapreduce.master.HandleFinishedMapTaskRequest)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated string results = 3;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(_impl_.results_.size());
+  for (int i = 0, n = _impl_.results_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      _impl_.results_.Get(i));
+  }
+
+  // int32 worker_id = 1;
+  if (this->_internal_worker_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_worker_id());
+  }
+
+  // int32 task_id = 2;
+  if (this->_internal_task_id() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_task_id());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData HandleFinishedMapTaskRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    HandleFinishedMapTaskRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*HandleFinishedMapTaskRequest::GetClassData() const { return &_class_data_; }
+
+
+void HandleFinishedMapTaskRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<HandleFinishedMapTaskRequest*>(&to_msg);
+  auto& from = static_cast<const HandleFinishedMapTaskRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mapreduce.master.HandleFinishedMapTaskRequest)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_impl_.results_.MergeFrom(from._impl_.results_);
+  if (from._internal_worker_id() != 0) {
+    _this->_internal_set_worker_id(from._internal_worker_id());
+  }
+  if (from._internal_task_id() != 0) {
+    _this->_internal_set_task_id(from._internal_task_id());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void HandleFinishedMapTaskRequest::CopyFrom(const HandleFinishedMapTaskRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mapreduce.master.HandleFinishedMapTaskRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool HandleFinishedMapTaskRequest::IsInitialized() const {
+  return true;
+}
+
+void HandleFinishedMapTaskRequest::InternalSwap(HandleFinishedMapTaskRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.results_.InternalSwap(&other->_impl_.results_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(HandleFinishedMapTaskRequest, _impl_.task_id_)
+      + sizeof(HandleFinishedMapTaskRequest::_impl_.task_id_)
+      - PROTOBUF_FIELD_OFFSET(HandleFinishedMapTaskRequest, _impl_.worker_id_)>(
+          reinterpret_cast<char*>(&_impl_.worker_id_),
+          reinterpret_cast<char*>(&other->_impl_.worker_id_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata HandleFinishedMapTaskRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
+      file_level_metadata_master_2eproto[4]);
+}
+
+// ===================================================================
+
+class HandleFinishedMapTaskResponse::_Internal {
+ public:
+};
+
+HandleFinishedMapTaskResponse::HandleFinishedMapTaskResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:mapreduce.master.HandleFinishedMapTaskResponse)
+}
+HandleFinishedMapTaskResponse::HandleFinishedMapTaskResponse(const HandleFinishedMapTaskResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  HandleFinishedMapTaskResponse* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.ok_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_impl_.ok_ = from._impl_.ok_;
+  // @@protoc_insertion_point(copy_constructor:mapreduce.master.HandleFinishedMapTaskResponse)
+}
+
+inline void HandleFinishedMapTaskResponse::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.ok_){false}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+HandleFinishedMapTaskResponse::~HandleFinishedMapTaskResponse() {
+  // @@protoc_insertion_point(destructor:mapreduce.master.HandleFinishedMapTaskResponse)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void HandleFinishedMapTaskResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void HandleFinishedMapTaskResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void HandleFinishedMapTaskResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:mapreduce.master.HandleFinishedMapTaskResponse)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.ok_ = false;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* HandleFinishedMapTaskResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // bool ok = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
+          _impl_.ok_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* HandleFinishedMapTaskResponse::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:mapreduce.master.HandleFinishedMapTaskResponse)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // bool ok = 1;
+  if (this->_internal_ok() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_ok(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:mapreduce.master.HandleFinishedMapTaskResponse)
+  return target;
+}
+
+size_t HandleFinishedMapTaskResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:mapreduce.master.HandleFinishedMapTaskResponse)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // bool ok = 1;
+  if (this->_internal_ok() != 0) {
+    total_size += 1 + 1;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData HandleFinishedMapTaskResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    HandleFinishedMapTaskResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*HandleFinishedMapTaskResponse::GetClassData() const { return &_class_data_; }
+
+
+void HandleFinishedMapTaskResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<HandleFinishedMapTaskResponse*>(&to_msg);
+  auto& from = static_cast<const HandleFinishedMapTaskResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:mapreduce.master.HandleFinishedMapTaskResponse)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_ok() != 0) {
+    _this->_internal_set_ok(from._internal_ok());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void HandleFinishedMapTaskResponse::CopyFrom(const HandleFinishedMapTaskResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:mapreduce.master.HandleFinishedMapTaskResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool HandleFinishedMapTaskResponse::IsInitialized() const {
+  return true;
+}
+
+void HandleFinishedMapTaskResponse::InternalSwap(HandleFinishedMapTaskResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_.ok_, other->_impl_.ok_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata HandleFinishedMapTaskResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_master_2eproto_getter, &descriptor_table_master_2eproto_once,
+      file_level_metadata_master_2eproto[5]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace master
 }  // namespace mapreduce
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::mapreduce::master::RegisterRequest*
+Arena::CreateMaybeMessage< ::mapreduce::master::RegisterRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mapreduce::master::RegisterRequest >(arena);
+}
 template<> PROTOBUF_NOINLINE ::mapreduce::master::RegisterResponse*
 Arena::CreateMaybeMessage< ::mapreduce::master::RegisterResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::mapreduce::master::RegisterResponse >(arena);
@@ -684,6 +1392,14 @@ Arena::CreateMaybeMessage< ::mapreduce::master::HeartbeatRequest >(Arena* arena)
 template<> PROTOBUF_NOINLINE ::mapreduce::master::HeartbeatResponse*
 Arena::CreateMaybeMessage< ::mapreduce::master::HeartbeatResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::mapreduce::master::HeartbeatResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mapreduce::master::HandleFinishedMapTaskRequest*
+Arena::CreateMaybeMessage< ::mapreduce::master::HandleFinishedMapTaskRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mapreduce::master::HandleFinishedMapTaskRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::mapreduce::master::HandleFinishedMapTaskResponse*
+Arena::CreateMaybeMessage< ::mapreduce::master::HandleFinishedMapTaskResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::mapreduce::master::HandleFinishedMapTaskResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

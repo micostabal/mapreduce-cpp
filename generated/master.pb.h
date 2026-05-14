@@ -30,7 +30,6 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
-#include <google/protobuf/empty.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_master_2eproto
@@ -47,26 +46,191 @@ struct TableStruct_master_2eproto {
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_master_2eproto;
 namespace mapreduce {
 namespace master {
+class HandleFinishedMapTaskRequest;
+struct HandleFinishedMapTaskRequestDefaultTypeInternal;
+extern HandleFinishedMapTaskRequestDefaultTypeInternal _HandleFinishedMapTaskRequest_default_instance_;
+class HandleFinishedMapTaskResponse;
+struct HandleFinishedMapTaskResponseDefaultTypeInternal;
+extern HandleFinishedMapTaskResponseDefaultTypeInternal _HandleFinishedMapTaskResponse_default_instance_;
 class HeartbeatRequest;
 struct HeartbeatRequestDefaultTypeInternal;
 extern HeartbeatRequestDefaultTypeInternal _HeartbeatRequest_default_instance_;
 class HeartbeatResponse;
 struct HeartbeatResponseDefaultTypeInternal;
 extern HeartbeatResponseDefaultTypeInternal _HeartbeatResponse_default_instance_;
+class RegisterRequest;
+struct RegisterRequestDefaultTypeInternal;
+extern RegisterRequestDefaultTypeInternal _RegisterRequest_default_instance_;
 class RegisterResponse;
 struct RegisterResponseDefaultTypeInternal;
 extern RegisterResponseDefaultTypeInternal _RegisterResponse_default_instance_;
 }  // namespace master
 }  // namespace mapreduce
 PROTOBUF_NAMESPACE_OPEN
+template<> ::mapreduce::master::HandleFinishedMapTaskRequest* Arena::CreateMaybeMessage<::mapreduce::master::HandleFinishedMapTaskRequest>(Arena*);
+template<> ::mapreduce::master::HandleFinishedMapTaskResponse* Arena::CreateMaybeMessage<::mapreduce::master::HandleFinishedMapTaskResponse>(Arena*);
 template<> ::mapreduce::master::HeartbeatRequest* Arena::CreateMaybeMessage<::mapreduce::master::HeartbeatRequest>(Arena*);
 template<> ::mapreduce::master::HeartbeatResponse* Arena::CreateMaybeMessage<::mapreduce::master::HeartbeatResponse>(Arena*);
+template<> ::mapreduce::master::RegisterRequest* Arena::CreateMaybeMessage<::mapreduce::master::RegisterRequest>(Arena*);
 template<> ::mapreduce::master::RegisterResponse* Arena::CreateMaybeMessage<::mapreduce::master::RegisterResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace mapreduce {
 namespace master {
 
 // ===================================================================
+
+class RegisterRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mapreduce.master.RegisterRequest) */ {
+ public:
+  inline RegisterRequest() : RegisterRequest(nullptr) {}
+  ~RegisterRequest() override;
+  explicit PROTOBUF_CONSTEXPR RegisterRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RegisterRequest(const RegisterRequest& from);
+  RegisterRequest(RegisterRequest&& from) noexcept
+    : RegisterRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RegisterRequest& operator=(const RegisterRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RegisterRequest& operator=(RegisterRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RegisterRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RegisterRequest* internal_default_instance() {
+    return reinterpret_cast<const RegisterRequest*>(
+               &_RegisterRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(RegisterRequest& a, RegisterRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RegisterRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RegisterRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RegisterRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RegisterRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RegisterRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RegisterRequest& from) {
+    RegisterRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RegisterRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "mapreduce.master.RegisterRequest";
+  }
+  protected:
+  explicit RegisterRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kAddressFieldNumber = 1,
+  };
+  // string address = 1;
+  void clear_address();
+  const std::string& address() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_address(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_address();
+  PROTOBUF_NODISCARD std::string* release_address();
+  void set_allocated_address(std::string* address);
+  private:
+  const std::string& _internal_address() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_address(const std::string& value);
+  std::string* _internal_mutable_address();
+  public:
+
+  // @@protoc_insertion_point(class_scope:mapreduce.master.RegisterRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr address_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_master_2eproto;
+};
+// -------------------------------------------------------------------
 
 class RegisterResponse final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mapreduce.master.RegisterResponse) */ {
@@ -116,7 +280,7 @@ class RegisterResponse final :
                &_RegisterResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   friend void swap(RegisterResponse& a, RegisterResponse& b) {
     a.Swap(&b);
@@ -264,7 +428,7 @@ class HeartbeatRequest final :
                &_HeartbeatRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(HeartbeatRequest& a, HeartbeatRequest& b) {
     a.Swap(&b);
@@ -412,7 +576,7 @@ class HeartbeatResponse final :
                &_HeartbeatResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(HeartbeatResponse& a, HeartbeatResponse& b) {
     a.Swap(&b);
@@ -510,6 +674,339 @@ class HeartbeatResponse final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_master_2eproto;
 };
+// -------------------------------------------------------------------
+
+class HandleFinishedMapTaskRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mapreduce.master.HandleFinishedMapTaskRequest) */ {
+ public:
+  inline HandleFinishedMapTaskRequest() : HandleFinishedMapTaskRequest(nullptr) {}
+  ~HandleFinishedMapTaskRequest() override;
+  explicit PROTOBUF_CONSTEXPR HandleFinishedMapTaskRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  HandleFinishedMapTaskRequest(const HandleFinishedMapTaskRequest& from);
+  HandleFinishedMapTaskRequest(HandleFinishedMapTaskRequest&& from) noexcept
+    : HandleFinishedMapTaskRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline HandleFinishedMapTaskRequest& operator=(const HandleFinishedMapTaskRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline HandleFinishedMapTaskRequest& operator=(HandleFinishedMapTaskRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const HandleFinishedMapTaskRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const HandleFinishedMapTaskRequest* internal_default_instance() {
+    return reinterpret_cast<const HandleFinishedMapTaskRequest*>(
+               &_HandleFinishedMapTaskRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(HandleFinishedMapTaskRequest& a, HandleFinishedMapTaskRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(HandleFinishedMapTaskRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(HandleFinishedMapTaskRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  HandleFinishedMapTaskRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<HandleFinishedMapTaskRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const HandleFinishedMapTaskRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const HandleFinishedMapTaskRequest& from) {
+    HandleFinishedMapTaskRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(HandleFinishedMapTaskRequest* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "mapreduce.master.HandleFinishedMapTaskRequest";
+  }
+  protected:
+  explicit HandleFinishedMapTaskRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResultsFieldNumber = 3,
+    kWorkerIdFieldNumber = 1,
+    kTaskIdFieldNumber = 2,
+  };
+  // repeated string results = 3;
+  int results_size() const;
+  private:
+  int _internal_results_size() const;
+  public:
+  void clear_results();
+  const std::string& results(int index) const;
+  std::string* mutable_results(int index);
+  void set_results(int index, const std::string& value);
+  void set_results(int index, std::string&& value);
+  void set_results(int index, const char* value);
+  void set_results(int index, const char* value, size_t size);
+  std::string* add_results();
+  void add_results(const std::string& value);
+  void add_results(std::string&& value);
+  void add_results(const char* value);
+  void add_results(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& results() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_results();
+  private:
+  const std::string& _internal_results(int index) const;
+  std::string* _internal_add_results();
+  public:
+
+  // int32 worker_id = 1;
+  void clear_worker_id();
+  int32_t worker_id() const;
+  void set_worker_id(int32_t value);
+  private:
+  int32_t _internal_worker_id() const;
+  void _internal_set_worker_id(int32_t value);
+  public:
+
+  // int32 task_id = 2;
+  void clear_task_id();
+  int32_t task_id() const;
+  void set_task_id(int32_t value);
+  private:
+  int32_t _internal_task_id() const;
+  void _internal_set_task_id(int32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:mapreduce.master.HandleFinishedMapTaskRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> results_;
+    int32_t worker_id_;
+    int32_t task_id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_master_2eproto;
+};
+// -------------------------------------------------------------------
+
+class HandleFinishedMapTaskResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:mapreduce.master.HandleFinishedMapTaskResponse) */ {
+ public:
+  inline HandleFinishedMapTaskResponse() : HandleFinishedMapTaskResponse(nullptr) {}
+  ~HandleFinishedMapTaskResponse() override;
+  explicit PROTOBUF_CONSTEXPR HandleFinishedMapTaskResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  HandleFinishedMapTaskResponse(const HandleFinishedMapTaskResponse& from);
+  HandleFinishedMapTaskResponse(HandleFinishedMapTaskResponse&& from) noexcept
+    : HandleFinishedMapTaskResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline HandleFinishedMapTaskResponse& operator=(const HandleFinishedMapTaskResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline HandleFinishedMapTaskResponse& operator=(HandleFinishedMapTaskResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const HandleFinishedMapTaskResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const HandleFinishedMapTaskResponse* internal_default_instance() {
+    return reinterpret_cast<const HandleFinishedMapTaskResponse*>(
+               &_HandleFinishedMapTaskResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(HandleFinishedMapTaskResponse& a, HandleFinishedMapTaskResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(HandleFinishedMapTaskResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(HandleFinishedMapTaskResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  HandleFinishedMapTaskResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<HandleFinishedMapTaskResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const HandleFinishedMapTaskResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const HandleFinishedMapTaskResponse& from) {
+    HandleFinishedMapTaskResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(HandleFinishedMapTaskResponse* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "mapreduce.master.HandleFinishedMapTaskResponse";
+  }
+  protected:
+  explicit HandleFinishedMapTaskResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kOkFieldNumber = 1,
+  };
+  // bool ok = 1;
+  void clear_ok();
+  bool ok() const;
+  void set_ok(bool value);
+  private:
+  bool _internal_ok() const;
+  void _internal_set_ok(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:mapreduce.master.HandleFinishedMapTaskResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool ok_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_master_2eproto;
+};
 // ===================================================================
 
 
@@ -519,6 +1016,60 @@ class HeartbeatResponse final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// RegisterRequest
+
+// string address = 1;
+inline void RegisterRequest::clear_address() {
+  _impl_.address_.ClearToEmpty();
+}
+inline const std::string& RegisterRequest::address() const {
+  // @@protoc_insertion_point(field_get:mapreduce.master.RegisterRequest.address)
+  return _internal_address();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RegisterRequest::set_address(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.address_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:mapreduce.master.RegisterRequest.address)
+}
+inline std::string* RegisterRequest::mutable_address() {
+  std::string* _s = _internal_mutable_address();
+  // @@protoc_insertion_point(field_mutable:mapreduce.master.RegisterRequest.address)
+  return _s;
+}
+inline const std::string& RegisterRequest::_internal_address() const {
+  return _impl_.address_.Get();
+}
+inline void RegisterRequest::_internal_set_address(const std::string& value) {
+  
+  _impl_.address_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RegisterRequest::_internal_mutable_address() {
+  
+  return _impl_.address_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RegisterRequest::release_address() {
+  // @@protoc_insertion_point(field_release:mapreduce.master.RegisterRequest.address)
+  return _impl_.address_.Release();
+}
+inline void RegisterRequest::set_allocated_address(std::string* address) {
+  if (address != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.address_.SetAllocated(address, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.address_.IsDefault()) {
+    _impl_.address_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:mapreduce.master.RegisterRequest.address)
+}
+
+// -------------------------------------------------------------------
+
 // RegisterResponse
 
 // int32 worker_id = 1;
@@ -589,9 +1140,158 @@ inline void HeartbeatResponse::set_ok(bool value) {
   // @@protoc_insertion_point(field_set:mapreduce.master.HeartbeatResponse.ok)
 }
 
+// -------------------------------------------------------------------
+
+// HandleFinishedMapTaskRequest
+
+// int32 worker_id = 1;
+inline void HandleFinishedMapTaskRequest::clear_worker_id() {
+  _impl_.worker_id_ = 0;
+}
+inline int32_t HandleFinishedMapTaskRequest::_internal_worker_id() const {
+  return _impl_.worker_id_;
+}
+inline int32_t HandleFinishedMapTaskRequest::worker_id() const {
+  // @@protoc_insertion_point(field_get:mapreduce.master.HandleFinishedMapTaskRequest.worker_id)
+  return _internal_worker_id();
+}
+inline void HandleFinishedMapTaskRequest::_internal_set_worker_id(int32_t value) {
+  
+  _impl_.worker_id_ = value;
+}
+inline void HandleFinishedMapTaskRequest::set_worker_id(int32_t value) {
+  _internal_set_worker_id(value);
+  // @@protoc_insertion_point(field_set:mapreduce.master.HandleFinishedMapTaskRequest.worker_id)
+}
+
+// int32 task_id = 2;
+inline void HandleFinishedMapTaskRequest::clear_task_id() {
+  _impl_.task_id_ = 0;
+}
+inline int32_t HandleFinishedMapTaskRequest::_internal_task_id() const {
+  return _impl_.task_id_;
+}
+inline int32_t HandleFinishedMapTaskRequest::task_id() const {
+  // @@protoc_insertion_point(field_get:mapreduce.master.HandleFinishedMapTaskRequest.task_id)
+  return _internal_task_id();
+}
+inline void HandleFinishedMapTaskRequest::_internal_set_task_id(int32_t value) {
+  
+  _impl_.task_id_ = value;
+}
+inline void HandleFinishedMapTaskRequest::set_task_id(int32_t value) {
+  _internal_set_task_id(value);
+  // @@protoc_insertion_point(field_set:mapreduce.master.HandleFinishedMapTaskRequest.task_id)
+}
+
+// repeated string results = 3;
+inline int HandleFinishedMapTaskRequest::_internal_results_size() const {
+  return _impl_.results_.size();
+}
+inline int HandleFinishedMapTaskRequest::results_size() const {
+  return _internal_results_size();
+}
+inline void HandleFinishedMapTaskRequest::clear_results() {
+  _impl_.results_.Clear();
+}
+inline std::string* HandleFinishedMapTaskRequest::add_results() {
+  std::string* _s = _internal_add_results();
+  // @@protoc_insertion_point(field_add_mutable:mapreduce.master.HandleFinishedMapTaskRequest.results)
+  return _s;
+}
+inline const std::string& HandleFinishedMapTaskRequest::_internal_results(int index) const {
+  return _impl_.results_.Get(index);
+}
+inline const std::string& HandleFinishedMapTaskRequest::results(int index) const {
+  // @@protoc_insertion_point(field_get:mapreduce.master.HandleFinishedMapTaskRequest.results)
+  return _internal_results(index);
+}
+inline std::string* HandleFinishedMapTaskRequest::mutable_results(int index) {
+  // @@protoc_insertion_point(field_mutable:mapreduce.master.HandleFinishedMapTaskRequest.results)
+  return _impl_.results_.Mutable(index);
+}
+inline void HandleFinishedMapTaskRequest::set_results(int index, const std::string& value) {
+  _impl_.results_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:mapreduce.master.HandleFinishedMapTaskRequest.results)
+}
+inline void HandleFinishedMapTaskRequest::set_results(int index, std::string&& value) {
+  _impl_.results_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:mapreduce.master.HandleFinishedMapTaskRequest.results)
+}
+inline void HandleFinishedMapTaskRequest::set_results(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.results_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:mapreduce.master.HandleFinishedMapTaskRequest.results)
+}
+inline void HandleFinishedMapTaskRequest::set_results(int index, const char* value, size_t size) {
+  _impl_.results_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:mapreduce.master.HandleFinishedMapTaskRequest.results)
+}
+inline std::string* HandleFinishedMapTaskRequest::_internal_add_results() {
+  return _impl_.results_.Add();
+}
+inline void HandleFinishedMapTaskRequest::add_results(const std::string& value) {
+  _impl_.results_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:mapreduce.master.HandleFinishedMapTaskRequest.results)
+}
+inline void HandleFinishedMapTaskRequest::add_results(std::string&& value) {
+  _impl_.results_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:mapreduce.master.HandleFinishedMapTaskRequest.results)
+}
+inline void HandleFinishedMapTaskRequest::add_results(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  _impl_.results_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:mapreduce.master.HandleFinishedMapTaskRequest.results)
+}
+inline void HandleFinishedMapTaskRequest::add_results(const char* value, size_t size) {
+  _impl_.results_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:mapreduce.master.HandleFinishedMapTaskRequest.results)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+HandleFinishedMapTaskRequest::results() const {
+  // @@protoc_insertion_point(field_list:mapreduce.master.HandleFinishedMapTaskRequest.results)
+  return _impl_.results_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+HandleFinishedMapTaskRequest::mutable_results() {
+  // @@protoc_insertion_point(field_mutable_list:mapreduce.master.HandleFinishedMapTaskRequest.results)
+  return &_impl_.results_;
+}
+
+// -------------------------------------------------------------------
+
+// HandleFinishedMapTaskResponse
+
+// bool ok = 1;
+inline void HandleFinishedMapTaskResponse::clear_ok() {
+  _impl_.ok_ = false;
+}
+inline bool HandleFinishedMapTaskResponse::_internal_ok() const {
+  return _impl_.ok_;
+}
+inline bool HandleFinishedMapTaskResponse::ok() const {
+  // @@protoc_insertion_point(field_get:mapreduce.master.HandleFinishedMapTaskResponse.ok)
+  return _internal_ok();
+}
+inline void HandleFinishedMapTaskResponse::_internal_set_ok(bool value) {
+  
+  _impl_.ok_ = value;
+}
+inline void HandleFinishedMapTaskResponse::set_ok(bool value) {
+  _internal_set_ok(value);
+  // @@protoc_insertion_point(field_set:mapreduce.master.HandleFinishedMapTaskResponse.ok)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

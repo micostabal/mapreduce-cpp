@@ -13,7 +13,7 @@ public:
 
   bool SendHeartbeat(int worker_id);
   
-  int RegisterWorker();
+  int RegisterWorker(std::string address);
 
 private:
   std::unique_ptr<mapreduce::master::MasterService::Stub> stub_;

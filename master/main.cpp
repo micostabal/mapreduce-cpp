@@ -15,7 +15,9 @@ int main() {
     
     std::cout << "MapReduce Master" << std::endl;
 
-    mapreduce::master::service::MasterServiceImpl service;
+    mapreduce::master::state::MasterState master_state;
+
+    mapreduce::master::service::MasterServiceImpl service(master_state);
 
     ServerBuilder builder;
     builder.AddListeningPort(address, grpc::InsecureServerCredentials());

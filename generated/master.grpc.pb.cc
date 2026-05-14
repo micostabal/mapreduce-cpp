@@ -25,6 +25,7 @@ namespace master {
 static const char* MasterService_method_names[] = {
   "/mapreduce.master.MasterService/Heartbeat",
   "/mapreduce.master.MasterService/RegisterWorker",
+  "/mapreduce.master.MasterService/HandleFinishedMapTask",
 };
 
 std::unique_ptr< MasterService::Stub> MasterService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -36,6 +37,7 @@ std::unique_ptr< MasterService::Stub> MasterService::NewStub(const std::shared_p
 MasterService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
   : channel_(channel), rpcmethod_Heartbeat_(MasterService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RegisterWorker_(MasterService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_HandleFinishedMapTask_(MasterService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status MasterService::Stub::Heartbeat(::grpc::ClientContext* context, const ::mapreduce::master::HeartbeatRequest& request, ::mapreduce::master::HeartbeatResponse* response) {
@@ -61,25 +63,48 @@ void MasterService::Stub::async::Heartbeat(::grpc::ClientContext* context, const
   return result;
 }
 
-::grpc::Status MasterService::Stub::RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::mapreduce::master::RegisterResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::mapreduce::master::RegisterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RegisterWorker_, context, request, response);
+::grpc::Status MasterService::Stub::RegisterWorker(::grpc::ClientContext* context, const ::mapreduce::master::RegisterRequest& request, ::mapreduce::master::RegisterResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::mapreduce::master::RegisterRequest, ::mapreduce::master::RegisterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RegisterWorker_, context, request, response);
 }
 
-void MasterService::Stub::async::RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::mapreduce::master::RegisterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RegisterWorker_, context, request, response, std::move(f));
+void MasterService::Stub::async::RegisterWorker(::grpc::ClientContext* context, const ::mapreduce::master::RegisterRequest* request, ::mapreduce::master::RegisterResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::mapreduce::master::RegisterRequest, ::mapreduce::master::RegisterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RegisterWorker_, context, request, response, std::move(f));
 }
 
-void MasterService::Stub::async::RegisterWorker(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+void MasterService::Stub::async::RegisterWorker(::grpc::ClientContext* context, const ::mapreduce::master::RegisterRequest* request, ::mapreduce::master::RegisterResponse* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RegisterWorker_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>* MasterService::Stub::PrepareAsyncRegisterWorkerRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mapreduce::master::RegisterResponse, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RegisterWorker_, context, request);
+::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>* MasterService::Stub::PrepareAsyncRegisterWorkerRaw(::grpc::ClientContext* context, const ::mapreduce::master::RegisterRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mapreduce::master::RegisterResponse, ::mapreduce::master::RegisterRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RegisterWorker_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>* MasterService::Stub::AsyncRegisterWorkerRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::mapreduce::master::RegisterResponse>* MasterService::Stub::AsyncRegisterWorkerRaw(::grpc::ClientContext* context, const ::mapreduce::master::RegisterRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncRegisterWorkerRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status MasterService::Stub::HandleFinishedMapTask(::grpc::ClientContext* context, const ::mapreduce::master::HandleFinishedMapTaskRequest& request, ::mapreduce::master::HandleFinishedMapTaskResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::mapreduce::master::HandleFinishedMapTaskRequest, ::mapreduce::master::HandleFinishedMapTaskResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_HandleFinishedMapTask_, context, request, response);
+}
+
+void MasterService::Stub::async::HandleFinishedMapTask(::grpc::ClientContext* context, const ::mapreduce::master::HandleFinishedMapTaskRequest* request, ::mapreduce::master::HandleFinishedMapTaskResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::mapreduce::master::HandleFinishedMapTaskRequest, ::mapreduce::master::HandleFinishedMapTaskResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_HandleFinishedMapTask_, context, request, response, std::move(f));
+}
+
+void MasterService::Stub::async::HandleFinishedMapTask(::grpc::ClientContext* context, const ::mapreduce::master::HandleFinishedMapTaskRequest* request, ::mapreduce::master::HandleFinishedMapTaskResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_HandleFinishedMapTask_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::mapreduce::master::HandleFinishedMapTaskResponse>* MasterService::Stub::PrepareAsyncHandleFinishedMapTaskRaw(::grpc::ClientContext* context, const ::mapreduce::master::HandleFinishedMapTaskRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::mapreduce::master::HandleFinishedMapTaskResponse, ::mapreduce::master::HandleFinishedMapTaskRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_HandleFinishedMapTask_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::mapreduce::master::HandleFinishedMapTaskResponse>* MasterService::Stub::AsyncHandleFinishedMapTaskRaw(::grpc::ClientContext* context, const ::mapreduce::master::HandleFinishedMapTaskRequest& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncHandleFinishedMapTaskRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -98,12 +123,22 @@ MasterService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       MasterService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< MasterService::Service, ::google::protobuf::Empty, ::mapreduce::master::RegisterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< MasterService::Service, ::mapreduce::master::RegisterRequest, ::mapreduce::master::RegisterResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](MasterService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::google::protobuf::Empty* req,
+             const ::mapreduce::master::RegisterRequest* req,
              ::mapreduce::master::RegisterResponse* resp) {
                return service->RegisterWorker(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      MasterService_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< MasterService::Service, ::mapreduce::master::HandleFinishedMapTaskRequest, ::mapreduce::master::HandleFinishedMapTaskResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](MasterService::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::mapreduce::master::HandleFinishedMapTaskRequest* req,
+             ::mapreduce::master::HandleFinishedMapTaskResponse* resp) {
+               return service->HandleFinishedMapTask(ctx, req, resp);
              }, this)));
 }
 
@@ -117,7 +152,14 @@ MasterService::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status MasterService::Service::RegisterWorker(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::mapreduce::master::RegisterResponse* response) {
+::grpc::Status MasterService::Service::RegisterWorker(::grpc::ServerContext* context, const ::mapreduce::master::RegisterRequest* request, ::mapreduce::master::RegisterResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status MasterService::Service::HandleFinishedMapTask(::grpc::ServerContext* context, const ::mapreduce::master::HandleFinishedMapTaskRequest* request, ::mapreduce::master::HandleFinishedMapTaskResponse* response) {
   (void) context;
   (void) request;
   (void) response;

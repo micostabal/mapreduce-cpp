@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package mapreduce.worker;
+
+service WorkerService {
+  rpc AssignMapTask(AssignMapTaskRequest) returns (AssignMapTaskResponse);
+}
+
+message AssignMapTaskRequest {
+  int32 task_id = 1;
+  string file_name = 2;
+}
+
+message AssignMapTaskResponse {
+  bool ok = 1;
+}

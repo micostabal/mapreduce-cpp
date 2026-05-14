@@ -6,7 +6,7 @@
 namespace mapreduce::master::state {
   // Worker State
 
-  WorkerState::WorkerState(int id): worker_id(id) {
+  WorkerState::WorkerState(int id, std::string address): worker_id(id), address(address) {
     this->last_heartbeat=std::chrono::steady_clock::now();
     this->alive=true;
     this->current_task_id=std::nullopt;
@@ -14,6 +14,7 @@ namespace mapreduce::master::state {
   
   std::string WorkerState::to_string() {
     std::string repr = "Worker: id="+std::to_string(this->worker_id);
+    repr = repr + ", address= " + this->address;
 
     repr = repr + ", alive="+std::to_string(this->alive);
 
@@ -27,16 +28,33 @@ namespace mapreduce::master::state {
     return this->worker_id;
   }
 
+  void WorkerState::update_last_heartbeat() {
+    this->last_heartbeat=std::chrono::steady_clock::now();
+  }
+
   // Master State
   
-  MasterState::MasterState() {}
+  MasterState::MasterState() {
+    this->new_worker_id=0;
+  }
   
-  void MasterState::add_worker_state(mapreduce::master::state::WorkerState &new_worker_state) {
+  mapreduce::master::state::WorkerState MasterState::add_worker(std::string new_worker_address) {
+    
+    mapreduce::master::state::WorkerState new_worker_state(this->new_worker_id, new_worker_address);
+
+    this->new_worker_id++;
+    
     this->workers.emplace(new_worker_state.get_worker_id(), new_worker_state);
+
+    return new_worker_state;
   };
   
   int MasterState::get_amount_workers() {
     return this->workers.size();
+  };
+
+  mapreduce::master::state::WorkerState& MasterState::get_worker_state_by_id(int worker_id) {
+    return this->workers[worker_id];
   };
 
   void MasterState::add_map_task(mapreduce::master::task::MasterTask& new_map_task) {

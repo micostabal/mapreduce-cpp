@@ -19,11 +19,13 @@ bool MasterClient::SendHeartbeat(int worker_id) {
   return status.ok() && response.ok();
 }
 
-int MasterClient::RegisterWorker() {
+int MasterClient::RegisterWorker(std::string address) {
   
-  google::protobuf::Empty request;
+  mapreduce::master::RegisterRequest request;
   mapreduce::master::RegisterResponse response;
   grpc::ClientContext context;
+
+  request.set_address(address);
   
   grpc::Status status = stub_->RegisterWorker(&context, request, &response);
   
