@@ -54,7 +54,7 @@ namespace mapreduce::master::state {
   };
 
   mapreduce::master::state::WorkerState& MasterState::get_worker_state_by_id(int worker_id) {
-    return this->workers[worker_id];
+    return this->workers.at(worker_id);
   };
 
   void MasterState::add_map_task(mapreduce::master::task::MasterTask& new_map_task) {
